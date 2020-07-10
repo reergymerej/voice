@@ -20,6 +20,7 @@ def lambda_handler(event, context):
     command = event.get('command')
     data = event.get('data')
     result = {
+        'statusCode': 200,
         'data': None,
         'message': None,
         'success': True,
@@ -30,8 +31,9 @@ def lambda_handler(event, context):
     elif command == 'add_feedback':
         result['data'] = add_feedback(data['text'])
     else:
+        result['statusCode'] = 400
         result['success'] = False
-        result['message'] = 'no command specified'
+        result['message'] = 'not sure which command to run'
 
     return result
 

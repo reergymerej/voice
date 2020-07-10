@@ -21,8 +21,15 @@ def save(text):
         FunctionName='voice_db',
         Payload=payload,
     )
-    print('response from save', response)
-    return response
+    parsed_response = json.loads(
+        response['Payload'].read().decode()
+    )
+    try:
+        return parsed_response['data']
+    except KeyError as error:
+        print(parsed_response['errorMessage'])
+        print(''.join(parsed_response['stackTrace']))
+        raise Exception('unable to save')
 
 def lambda_handler(event, context):
     text = None
@@ -42,20 +49,31 @@ def lambda_handler(event, context):
         }
 
     print('saving text: {}'.format(text))
-    result = save(text)
-    print('result', result)
-    return {
-        'statusCode': 200,
-        'body': json.dumps({
-            'message': 'text saved',
-            'text': text,
-        }),
-        "headers": {
-            "Access-Control-Allow-Origin":"*",
-            "Content-Type": "application/json"
-        },
-    }
-
+    try:
+        result = save(text)
+        print('result', result)
+        return {
+            'statusCode': 200,
+            'body': json.dumps({
+                'message': 'text saved',
+                'text': text,
+            }),
+            "headers": {
+                "Access-Control-Allow-Origin":"*",
+                "Content-Type": "application/json"
+            },
+        }
+    except:
+        return {
+            'statusCode': 500,
+            'body': json.dumps({
+                'message': 'problem saving',
+            }),
+            "headers": {
+                "Access-Control-Allow-Origin":"*",
+                "Content-Type": "application/json"
+            },
+        }
 
 if __name__ == '__main__':
     event = None

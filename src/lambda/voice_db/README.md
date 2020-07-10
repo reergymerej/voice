@@ -27,3 +27,8 @@ client.invoke(
 ```
 `command` tells the db module what you want to run.
 `data` is open-ended JSON and varies per command.
+
+
+## TODO
+
+This should fail if it does not insert.

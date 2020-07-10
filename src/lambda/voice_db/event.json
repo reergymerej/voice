@@ -1,6 +1,6 @@
 {
   "command": "add_feedback",
   "data": {
-    "text": "Save this sucker."
+    "text": "You can't save apostrophes."
   }
 }

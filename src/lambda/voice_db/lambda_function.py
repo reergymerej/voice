@@ -19,12 +19,20 @@ def sanity():
     return json.dumps(result)
 
 def lambda_handler(event, context):
-    print('>')
     print('EVENT', event)
-    print('>')
-    result = sanity()
-    print('>')
-    print('RESULT', result)
+    command = event.get('command')
+    result = {
+        'data': None,
+        'message': None,
+        'success': True,
+    }
+
+    if command == 'sanity':
+        result['data'] = sanity()
+    else:
+        result['success'] = False
+        result['message'] = 'no command specified'
+
     return result
 
 if __name__ == '__main__':

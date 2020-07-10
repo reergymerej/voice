@@ -1,6 +1,3 @@
 {
-  "body": "{\"disabled\": false, \"commandId\": 11 }",
-  "pathParameters": {
-    "phone": "1"
-  }
+  "command": "sanity"
 }

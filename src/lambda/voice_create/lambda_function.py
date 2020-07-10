@@ -11,7 +11,7 @@ def get_text(event):
 def save(text):
     client = boto3.client('lambda')
     payload = json.dumps({
-        'command': 'sanity',
+        'command': 'add_feedback',
         'data': {
             'text': text,
         },
@@ -19,7 +19,6 @@ def save(text):
     print('payload', payload)
     response = client.invoke(
         FunctionName='voice_db',
-        InvocationType='Event',
         Payload=payload,
     )
     print('response from save', response)

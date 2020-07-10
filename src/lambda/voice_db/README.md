@@ -22,7 +22,6 @@ payload = json.dumps({
 })
 client.invoke(
     FunctionName='voice_db',
-    InvocationType='Event',
     Payload=payload,
 )
 ```

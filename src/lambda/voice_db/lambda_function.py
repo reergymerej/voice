@@ -2,7 +2,7 @@ import db
 import json
 
 def sanity(anything):
-    query = "select '{0}'".format(anything)
+    query = "SELECT '{0}'".format(anything)
     result = db.all(query)
     return json.dumps(result)
 

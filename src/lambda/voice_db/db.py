@@ -1,8 +1,13 @@
 import random as get_random
 from connect import get_connection
 from psycopg2.extras import RealDictCursor
+import os
 
 def query(fn, sql):
+    print("query:", sql)
+    if os.getenv('DEV'):
+        print("skipping db")
+        return
     try:
         connection = get_connection()
         cursor = connection.cursor(None, cursor_factory=RealDictCursor)

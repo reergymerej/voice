@@ -1,3 +1,6 @@
 {
-  "command": "sanity"
+  "command": "add_feedback",
+  "data": {
+    "text": "Save this sucker."
+  }
 }

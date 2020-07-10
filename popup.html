@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        background: #333;
+      }
+      textarea {
+        width: 400px;
+        height: 200px;
+        outline-color: coral;
+      }
+      .buttons {
+        display: flex;
+        margin-top: 0.5em;
+      }
+      #cancel {
+        background: red;
+        margin-right: 1em;
+        outline-color: #502765;
+      }
+      #submit {
+        background: green;
+        outline-color: #08ff60;
+      }
+      button {
+        opacity: 0.75;
+        font-weight: bold;
+        border: 0;
+        height: 30px;
+        width: 30px;
+        flex: 1;
+        color: #fff;
+        cursor: pointer;
+      }
+      button:hover, button:focus {
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="textarea" autofocus placeholder="Tell me what you think."></textarea>
+    <div class="buttons">
+      <button id="cancel"></button>
+      <button id="submit"></button>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

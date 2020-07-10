@@ -5,6 +5,7 @@ def get_text(event):
     text = body.get('text')
     if not text:
         raise ValueError("no text found in request")
+    return text
 
 def lambda_handler(event, context):
     try:
@@ -14,6 +15,7 @@ def lambda_handler(event, context):
             'statusCode': 200,
             'body': json.dumps({
                 'message': 'text saved',
+                'text': text,
             }),
             "headers": {
                 "Access-Control-Allow-Origin":"*",

@@ -19,8 +19,12 @@ def sanity():
     return json.dumps(result)
 
 def lambda_handler(event, context):
-    print('event', event)
+    print('>')
+    print('EVENT', event)
+    print('>')
     result = sanity()
+    print('>')
+    print('RESULT', result)
     return result
 
 if __name__ == '__main__':

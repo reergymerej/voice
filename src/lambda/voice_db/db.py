@@ -5,8 +5,7 @@ from psycopg2.extras import RealDictCursor
 def query(fn, sql):
     try:
         connection = get_connection()
-        cursor = connection.cursor(None,
-                                   cursor_factory=RealDictCursor)
+        cursor = connection.cursor(None, cursor_factory=RealDictCursor)
         cursor.execute(sql)
         if fn:
             result = fn(cursor)

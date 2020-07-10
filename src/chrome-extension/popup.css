@@ -1,0 +1,54 @@
+body {
+  background: #333;
+  padding: 1em;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.main {
+  margin: auto;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+textarea {
+  height: 200px;
+  outline-color: coral;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 0.5em;
+}
+
+button {
+  opacity: 0.75;
+  font-weight: bold;
+  border: 0;
+  height: 30px;
+  width: 30px;
+  flex: 1;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover, button:focus {
+  opacity: 1;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+#cancel {
+  background: red;
+  margin-right: 1em;
+  outline-color: #502765;
+}
+
+#submit {
+  background: green;
+  outline-color: #08ff60;
+}

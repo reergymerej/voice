@@ -2,17 +2,19 @@ import db
 import json
 
 def sanity(anything):
-    query = "SELECT '{0}'".format(anything)
-    result = db.all(query)
+    query = "SELECT %(anything)s"
+    data = {'anything': anything}
+    result = db.all(query, data)
     return json.dumps(result)
 
 def add_feedback(feedback):
     query = """
         INSERT INTO feedback (text)
-        VALUES ('{feedback}')
+        VALUES (%(feedback)s)
         RETURNING *
-    """.format(feedback=feedback)
-    result = db.insert(query)
+    """
+    data={'feedback': feedback}
+    result = db.insert(query, data)
     return json.dumps(result)
 
 def lambda_handler(event, context):

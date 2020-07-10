@@ -4,7 +4,7 @@ import psycopg2
 from psycopg2.extras import RealDictCursor
 import os
 
-def query(fn, sql):
+def query(fn, sql, data):
     print("query:", sql)
     if os.getenv('DEV'):
         print("skipping db")
@@ -12,7 +12,7 @@ def query(fn, sql):
     connection = get_connection()
     cursor = connection.cursor(None, cursor_factory=RealDictCursor)
     # cursor.execute("query with params %s %s", ("param1", "pa'ram2"))
-    cursor.execute(sql)
+    cursor.execute(sql, data)
     if fn:
         result = fn(cursor)
     connection.commit()
@@ -20,23 +20,23 @@ def query(fn, sql):
     cursor.close()
     return result
 
-def one(sql):
+def one(sql, data):
     fn = lambda cursor: cursor.fetchone()
-    return query(fn, sql)
+    return query(fn, sql, data)
 
-def all(sql):
+def all(sql, data):
     fn = lambda cursor: cursor.fetchall()
-    return query(fn, sql)
+    return query(fn, sql, data)
 
-def random(sql):
+def random(sql, data):
     fn = lambda cursor: cursor.fetchall()
-    results = query(fn, sql)
+    results = query(fn, sql, data)
     return get_random.choice(results)
 
-def insert(sql):
+def insert(sql, data):
     fn = lambda cursor: cursor.fetchall()
-    return query(fn, sql)
+    return query(fn, sql, data)
 
-def update(sql):
+def update(sql, data):
     fn = lambda cursor: cursor.fetchall()
-    return query(fn, sql)
+    return query(fn, sql, data)

@@ -10,7 +10,8 @@ cancel.addEventListener('click', () => {
 
 submit.addEventListener('click', () => {
   const text = (textarea.value || '').trim()
-  fetch('boop.beep.cork', {
+  const url = 'https://lmeimzkewb.execute-api.us-east-1.amazonaws.com/prod'
+  fetch(url, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

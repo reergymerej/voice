@@ -6,7 +6,11 @@ const submit = document.getElementById('submit')
 const error = document.getElementById('error')
 
 cancel.addEventListener('click', () => {
-  window.close()
+  if (getText()) {
+    if (confirm('You want to lose your entry?')) {
+      window.close()
+    }
+  }
 })
 
 const setText = (el, text) => el.innerText = text
